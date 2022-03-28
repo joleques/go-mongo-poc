@@ -1,0 +1,15 @@
+version: "3"
+services:
+  mongodb:
+    image : mongo:5.0.6
+    container_name: mongodb-go
+    ports:
+    - 27017:27017
+    - 28017:28017
+    volumes:
+        - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+    - go-mongo-poc  
+networks:
+    go-mongo-poc:
+        driver: bridge 
